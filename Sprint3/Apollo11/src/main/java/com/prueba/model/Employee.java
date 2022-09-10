@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,45 +26,60 @@ public class Employee {
 	@Column(name="email", unique=true)
 	private String email;
 	
+	@Column(name="imagen")
+	private String imagen;
+	
+	@Column(name="phone")
+	private String phone;
+	
 	@Column(name="updatedAt")
 	private Date updatedAt;
 
 	@Column(name="createdAt")
 	private Date createdAt;
 	
-	@OneToOne
-	@JoinColumn(name = "profile")
-	private Profile profile;
+	//@OneToOne
+	//@JoinColumn(name = "profile")
+	//private Profile profile;
 	
 	@Column(name="role")
 	private RoleName role;
 	
 	// Relacion Enterprise
-	@OneToOne
-	@JoinColumn(name = "id")
+	//@OneToOne
+	//@JoinColumn(name = "id")
+	//private Enterprise enterprise;
+	
+	
+	@ManyToOne(optional = false)	
+	@JoinColumn(name = "enterprise"	)
 	private Enterprise enterprise;
 	
 	//Relacion con Enterprise
 	 //@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, orphanRemoval = true)
-	@OneToMany(mappedBy = "user")
-	private List<Transaction> transaction;
+	//@OneToMany(mappedBy = "user")
+	//private List<Transaction> transaction;
 
 
 	public Employee() {
 		super();
 	}
+	
 
-	public Employee(String email, Date updatedAt, Date createdAt, Profile profile, RoleName role, Enterprise enterprise,
-			List<Transaction> transaction) {
+	public Employee(String email, String imagen, String phone, Date updatedAt, Date createdAt, RoleName role,
+			Enterprise enterprise) {
 		super();
 		this.email = email;
+		this.imagen = imagen;
+		this.phone = phone;
 		this.updatedAt = updatedAt;
 		this.createdAt = createdAt;
-		this.profile = profile;
 		this.role = role;
 		this.enterprise = enterprise;
-		this.transaction = transaction;
 	}
+
+
+
 
 	public Integer getId() {
 		return id;
@@ -97,13 +113,6 @@ public class Employee {
 		this.createdAt = createdAt;
 	}
 
-	public Profile getProfile() {
-		return profile;
-	}
-
-	public void setProfile(Profile profile) {
-		this.profile = profile;
-	}
 
 	public RoleName getRole() {
 		return role;
@@ -121,12 +130,26 @@ public class Employee {
 		this.enterprise = enterprise;
 	}
 
-	public List<Transaction> getTransaction() {
-		return transaction;
+
+	public String getImagen() {
+		return imagen;
 	}
 
-	public void setTransaction(List<Transaction> transaction) {
-		this.transaction = transaction;
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
+
+
+	public String getPhone() {
+		return phone;
+	}
+
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	
+	
 	 
 }

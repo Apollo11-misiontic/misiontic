@@ -39,8 +39,8 @@ public class Enterprise {
 	private Date updatedAt;
 	
 	//Relacion con transactions
-	 @OneToMany(mappedBy = "enterprise", cascade = {CascadeType.ALL}, orphanRemoval = true)
-	 private List<Transaction> transaction;
+	 //@OneToMany(mappedBy = "enterprise", cascade = {CascadeType.ALL}, orphanRemoval = true)
+	 //private List<Transaction> transaction;
 
 	 
 	 
@@ -48,8 +48,7 @@ public class Enterprise {
 		super();
 	}
 
-	public Enterprise(String name, String document, String phone, String address, Date createdAt, Date updatedAt,
-			List<Transaction> transaction) {
+	public Enterprise(String name, String document, String phone, String address, Date createdAt, Date updatedAt) {
 		super();
 		this.name = name;
 		this.document = document;
@@ -57,7 +56,6 @@ public class Enterprise {
 		this.address = address;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-		this.transaction = transaction;
 	}
 
 	public Integer getId() {
@@ -114,14 +112,6 @@ public class Enterprise {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
-	}
-
-	public List<Transaction> getTransaction() {
-		return transaction;
-	}
-
-	public void setTransaction(List<Transaction> transaction) {
-		this.transaction = transaction;
 	}
 	
 	

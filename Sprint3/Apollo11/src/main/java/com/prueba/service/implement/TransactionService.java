@@ -19,6 +19,7 @@ public class TransactionService implements ITransactionService{
 	@Override
 	public Transaction registrar(Transaction t) throws Exception {
 		// TODO Auto-generated method stub
+		// Validar que venga un usuario o una empresa
 		return repo.save(t);
 	}
 
