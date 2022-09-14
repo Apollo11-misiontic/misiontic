@@ -1,6 +1,7 @@
 package com.prueba.service.implement;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +49,20 @@ public class TransactionService implements ITransactionService{
 		repo.deleteById(id);
 	}
 
+	@Override
+	public Transaction actualizar(Integer id, Map<String, Object> objeto) throws Exception {
+		// TODO Auto-generated method stub
+		Transaction tran = listarPorId(id);
+		for(String key: objeto.keySet()){
+			if(key.equals("concept")) {
+				//System.out.println("recibo nombre");
+				tran.setConcept(objeto.get(key).toString());
+				//System.out.println(tran.getConcept());
+			}
+		}
+		return repo.save(tran);
+	}
+
+	
 	
 }

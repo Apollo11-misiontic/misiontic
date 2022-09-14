@@ -1,6 +1,8 @@
 package com.prueba.controller;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.prueba.model.Enterprise;
 import com.prueba.service.interfaces.IEnterpriseService;
 
@@ -52,5 +55,10 @@ public class EnterpriseController {
 	@DeleteMapping("/{id}")
 	public void eliminar(@PathVariable("id") Integer id) throws Exception {
 		service.eliminar(id);
+	}	
+	
+	@PatchMapping("/actualizar/{id}")
+	public void actualizar(@PathVariable("id") Integer id, @RequestBody Map<String,Object> objeto) throws Exception {
+		service.actualizar(id, objeto);
 	}
 }

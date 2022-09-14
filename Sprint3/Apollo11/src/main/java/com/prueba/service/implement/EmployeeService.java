@@ -1,6 +1,7 @@
 package com.prueba.service.implement;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,41 @@ public class EmployeeService implements IEmployeeService{
 	public void eliminar(Integer id) throws Exception {
 		// TODO Auto-generated method stub
 		repo.deleteById(id);
+	}
+
+	@Override
+	public Employee actualizar(Integer id, Map<String, Object> objeto) throws Exception {
+		// TODO Auto-generated method stub
+		Employee emp = listarPorId(id);
+		for(String key: objeto.keySet()){
+			if(key.equals("email")) {
+				//System.out.println("recibo email");
+				emp.setEmail(objeto.get(key).toString());
+				//System.out.println(emp.getEmail());
+			}
+			else if(key.equals("imagen")) {
+				//System.out.println("recibo imagen ");
+				emp.setImagen(objeto.get(key).toString());
+				//System.out.println(emp.getImagen());
+			}
+			else if(key.equals("phone")) {
+				//System.out.println("recibo phone ");
+				emp.setPhone(objeto.get(key).toString());
+				//System.out.println(emp.getPhone());
+			}
+			else if(key.equals("createdAt")) {
+				//System.out.println("recibo createdAt");
+				//ent.setCreatedAt(bjeto.get(key).toString());
+				//System.out.println(ent.getAddress());
+			}
+			else if(key.equals("updatedAt")) {
+				//System.out.println("recibo updatedAt");
+				//ent.setCreatedAt(bjeto.get(key).toString());
+				//System.out.println(ent.getAddress());
+			}
+			
+		}
+		return repo.save(emp);
 	}
 	
 }
