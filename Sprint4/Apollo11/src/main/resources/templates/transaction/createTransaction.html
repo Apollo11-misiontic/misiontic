@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear transacion</title>
+</head>
+<body>
+   <h1> Creacion de transacion </h1>
+   <!-- define url donde se va a enviar la peticcion en th:action -->
+   	<form th:action="@{/transaction/save}" method="post">
+	  Concept:<br>
+	  <input type="text" name="concept" value="">
+	  <br>
+	  Amount:<br>
+	  <input type="number" name="amount" value="">
+	  <br>
+	  CreatedAt:<br>
+	  <input type="date" name="createdAt" value="">
+	  <br>
+	  UpdatedAt:<br>
+	  <input type="date" name="updatedAt" value="">
+	  <br>
+	  User:<br>
+	  <input type="number" name="user" value="">
+	  <br>
+	  Enterprise:<br>
+	  <input type="number" name="enterprise" value="">
+	  <br><br>
+	  <input type="submit" value="Guardar">
+	</form>
+
+   
+   
+</body>
+</html>
