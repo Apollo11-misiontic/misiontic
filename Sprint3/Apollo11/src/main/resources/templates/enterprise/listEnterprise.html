@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar empresas</title>
+    <!-- link css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- renderizar en una lista -->
+	<h1 class="text-primary">Lista de empresas</h1>
+
+   <table class="table table-striped table-bordered table-hover">
+   <!-- columnas -->
+	  <tr>
+	  	<th>Id</th>
+	    <th>name</th>
+	    <th>document</th>
+	    <th>phone</th>
+	    <th>address</th>
+	    <th>createdAt </th>
+	    <th>updatedAt</th>
+	    <th>borrar</th>
+	  </tr>
+	<!-- filas -->
+	<tr th:each="enterprise : ${enterprises}">
+	    <td th:text="${enterprise.id}"></td>
+	    <td th:text="${enterprise.name}"></td>
+	    <td th:text="${enterprise.document}"></td>
+	    <td th:text="${enterprise.phone}"></td>
+	    <td th:text="${enterprise.address}"></td>
+	    <td th:text="${enterprise.createdAt}"></td>
+	    <td th:text="${enterprise.updatedAt}"></td>
+	    <td>
+	    <a th:href="@{/enterprise/delete(id=${enterprise.id})}" class="btn btn-danger">Borrar</a>
+	    </td>
+	 </tr> 
+	 
+    <!-- archivo javascript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

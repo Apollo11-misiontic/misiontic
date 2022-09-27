@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar empresas</title>
+    <!-- link css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+	<!-- renderizar en una lista -->
+	<h1 class="text-primary">Lista de empleados</h1>
+
+   <table class="table table-striped table-bordered table-hover">
+   <!-- columnas -->
+	  <tr>
+	  	<th>Id</th>
+	    <th>email</th>
+	    <th>role</th>
+	    <th>imagen</th>
+	    <th>phone</th>
+	    <th>updatedAt </th>
+	    <th>createdAt</th>
+	    <th>enterprise</th>
+	    <th>borrar</th>
+	  </tr>
+	<!-- filas -->
+	<tr th:each="employee : ${employees}">
+	    <td th:text="${employee.id}"></td>
+	    <td th:text="${employee.email}"></td>
+	    <td th:text="${employee.role}"></td>
+	    <td th:text="${employee.imagen}"></td>
+	    <td th:text="${employee.phone}"></td>
+	    <td th:text="${employee.updatedAt}"></td>
+	    <td th:text="${employee.createdAt}"></td>
+	    <td th:text="${employee.enterprise.id}"></td>
+	    <td>
+	    <a th:href="@{/employee/delete(id=${employee.id})}" class="btn btn-danger">Borrar</a>
+	    </td>
+	 </tr> 
+	 
+    <!-- archivo javascript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
